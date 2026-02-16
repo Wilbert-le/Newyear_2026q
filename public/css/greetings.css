@@ -1,3 +1,6 @@
+/* Import script/handwriting fonts giống trang chính */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@700&family=Satisfy&family=Cookie&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,11 +8,19 @@
 }
 
 body {
-    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-family: 'Pacifico', 'Dancing Script', cursive;
     overflow-x: hidden;
     min-height: 100vh;
-    background: linear-gradient(180deg, #c62828 0%, #d32f2f 40%, #c62828 100%);
+    /* Gradient đỏ giống trang chính */
+    background: linear-gradient(135deg, #8B0000 0%, #c62828 25%, #dc143c 50%, #c62828 75%, #8B0000 100%);
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
     position: relative;
+}
+
+@keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 .container {
@@ -22,12 +33,13 @@ body {
     padding: 40px 20px;
 }
 
-/* Corner decoration */
+/* Corner decoration - giống trang chính (không có viền vuông) */
 .corner {
     position: fixed;
     width: 120px;
     height: 120px;
     z-index: 10;
+    opacity: 0.7;
 }
 
 .corner-top-left {
@@ -40,9 +52,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    border: 4px solid #ffd700;
-    border-right: none;
-    border-bottom: none;
+    /* Không có border */
 }
 
 .corner-top-right {
@@ -55,9 +65,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    border: 4px solid #ffd700;
-    border-left: none;
-    border-bottom: none;
+    /* Không có border */
 }
 
 .corner-bottom-left {
@@ -70,9 +78,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    border: 4px solid #ffd700;
-    border-right: none;
-    border-top: none;
+    /* Không có border */
 }
 
 .corner-bottom-right {
@@ -85,20 +91,20 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    border: 4px solid #ffd700;
-    border-left: none;
-    border-top: none;
+    /* Không có border */
 }
 
+/* Họa tiết chữ thập giống trang chính */
 .corner::after {
     content: '';
     position: absolute;
     width: 40px;
     height: 40px;
-    background: linear-gradient(45deg, #ffd700 25%, transparent 25%, transparent 75%, #ffd700 75%),
-                linear-gradient(45deg, #ffd700 25%, transparent 25%, transparent 75%, #ffd700 75%);
+    background: linear-gradient(45deg, rgba(255, 215, 0, 0.5) 25%, transparent 25%, transparent 75%, rgba(255, 215, 0, 0.5) 75%),
+                linear-gradient(45deg, rgba(255, 215, 0, 0.5) 25%, transparent 25%, transparent 75%, rgba(255, 215, 0, 0.5) 75%);
     background-size: 20px 20px;
     background-position: 0 0, 10px 10px;
+    opacity: 0.8;
 }
 
 .corner-top-left::after { top: 10px; left: 10px; }
@@ -116,7 +122,7 @@ body {
     animation: fadeIn 1s ease-out;
 }
 
-/* Left decoration */
+/* Left decoration - GIỮ LẠI ĐÁM MÂY */
 .left-decoration {
     position: absolute;
     left: -200px;
@@ -127,10 +133,11 @@ body {
 .cloud-left {
     width: 200px;
     height: 80px;
-    background: rgba(255, 250, 240, 0.6);
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 100px;
     position: relative;
     animation: float-cloud 6s ease-in-out infinite;
+    opacity: 0.7;
 }
 
 .cloud-left::before {
@@ -138,7 +145,7 @@ body {
     position: absolute;
     width: 100px;
     height: 100px;
-    background: rgba(255, 250, 240, 0.6);
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     top: -40px;
     left: 30px;
@@ -149,7 +156,43 @@ body {
     position: absolute;
     width: 80px;
     height: 80px;
-    background: rgba(255, 250, 240, 0.6);
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    top: -30px;
+    right: 30px;
+}
+
+.lantern-left {
+    display: none; /* ẨN BÁO TIỀN BÊN TRÁI */
+}
+
+.cloud-left {
+    width: 200px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 100px;
+    position: relative;
+    animation: float-cloud 6s ease-in-out infinite;
+    opacity: 0.7;
+}
+
+.cloud-left::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    top: -40px;
+    left: 30px;
+}
+
+.cloud-left::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     top: -30px;
     right: 30px;
@@ -162,7 +205,7 @@ body {
     animation: swing-left 3s ease-in-out infinite;
 }
 
-/* Right decoration */
+/* Right decoration - GIỮ LẠI ĐÁM MÂY */
 .right-decoration {
     position: absolute;
     right: -150px;
@@ -170,85 +213,329 @@ body {
     transform: translateY(-50%);
 }
 
+.cloud-right {
+    width: 200px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 100px;
+    position: relative;
+    animation: float-cloud 6s ease-in-out infinite reverse;
+    opacity: 0.7;
+}
+
+.cloud-right::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    top: -40px;
+    left: 30px;
+}
+
+.cloud-right::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    top: -30px;
+    right: 30px;
+}
+
+.lantern-right {
+    display: none; /* ẨN BÁO TIỀN BÊN PHẢI */
+}
+
 .lantern-right {
     animation: swing-right 3s ease-in-out infinite 1.5s;
 }
 
-/* Lantern styles */
+/* Lucky money bag styles - Bao tiền/túi vàng */
 .lantern-string {
-    width: 2px;
+    width: 4px;
     height: 60px;
-    background: linear-gradient(to bottom, #ffd700, rgba(255, 215, 0, 0.5));
+    background: linear-gradient(to bottom, #d4a017, #8b7355);
     margin: 0 auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .lantern-body {
     position: relative;
-    width: 90px;
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .lantern-top {
-    width: 30px;
-    height: 10px;
-    background: linear-gradient(to bottom, #ffd700, #d4a017);
-    margin: 0 auto;
-    border-radius: 5px 5px 0 0;
+    display: none;
 }
 
+/* Bao tiền chính */
 .lantern-main {
-    width: 90px;
-    height: 110px;
-    background: radial-gradient(ellipse at 30% 30%, #ff8a65, #d32f2f 40%, #b71c1c);
-    border-radius: 50% 50% 48% 48%;
-    margin: 3px auto;
+    width: 70px;
+    height: 75px;
+    background: radial-gradient(ellipse at 40% 30%, #ff6b6b 0%, #dc143c 40%, #c41e3a 70%, #8b0000 100%);
+    border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%;
     position: relative;
-    box-shadow: inset -12px 0 20px rgba(0, 0, 0, 0.4),
-                0 8px 25px rgba(0, 0, 0, 0.5);
+    box-shadow: 
+        inset -5px 0 15px rgba(0, 0, 0, 0.4),
+        inset 5px 0 15px rgba(255, 255, 255, 0.2),
+        0 15px 35px rgba(0, 0, 0, 0.5);
+    margin-top: 10px;
+    overflow: visible;
 }
 
+/* Họa tiết chấm nhỏ trên bao */
+.lantern-main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 107, 107, 0.3) 1px, transparent 1px),
+        radial-gradient(circle at 60% 40%, rgba(255, 107, 107, 0.3) 1px, transparent 1px),
+        radial-gradient(circle at 40% 60%, rgba(255, 107, 107, 0.3) 1px, transparent 1px),
+        radial-gradient(circle at 70% 70%, rgba(255, 107, 107, 0.3) 1px, transparent 1px);
+    background-size: 15px 15px;
+    border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%;
+}
+
+/* Nhãn "Lộc" hoặc "福" trên bao */
+.lantern-main::after {
+    content: '福';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-5deg);
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #d4a017 100%);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Sans SC', Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: #8b0000;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 
+        0 3px 10px rgba(0, 0, 0, 0.3),
+        inset 0 1px 3px rgba(255, 255, 255, 0.5);
+    border: 2px solid #d4a017;
+}
+
+/* Miệng bao - phần vải vàng buộc */
 .lantern-bottom {
-    width: 30px;
-    height: 7px;
-    background: linear-gradient(to bottom, #d4a017, #ffd700);
-    margin: -3px auto 0;
-    border-radius: 0 0 3px 3px;
+    width: 65px;
+    height: 25px;
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 30%, #ffd700 70%, #d4a017 100%);
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.3),
+        inset 0 -3px 8px rgba(0, 0, 0, 0.2),
+        inset 0 2px 5px rgba(255, 255, 255, 0.4);
+    z-index: 2;
 }
 
+/* Nếp nhăn trên miệng bao */
+.lantern-bottom::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 15%;
+    right: 15%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(212, 160, 23, 0.5), transparent);
+    box-shadow: 0 5px 0 rgba(212, 160, 23, 0.3);
+}
+
+/* Dây thừng buộc bao */
+.lantern-bottom::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 3px;
+    background: linear-gradient(90deg, #d4a017, #8b7355, #d4a017);
+    border-radius: 2px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Đồng xu dưới bao */
 .lantern-tassel {
-    width: 2px;
-    height: 30px;
-    background: linear-gradient(to bottom, #ffd700, transparent);
-    margin: 0 auto;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 5px;
     position: relative;
+}
+
+/* Tạo 3 đồng xu vàng */
+.lantern-tassel::before {
+    content: '';
+    width: 28px;
+    height: 18px;
+    background: radial-gradient(ellipse, #ffd700 0%, #ffed4e 40%, #d4a017 100%);
+    border-radius: 50%;
+    box-shadow: 
+        0 5px 12px rgba(0, 0, 0, 0.4),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.3),
+        inset 0 2px 3px rgba(255, 255, 255, 0.6);
+    border: 2px solid #d4a017;
+    position: absolute;
+    left: 5px;
+    top: 0;
+    animation: coin-float 2s ease-in-out infinite;
 }
 
 .lantern-tassel::after {
     content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 15px;
-    height: 15px;
-    background: radial-gradient(circle, #ffd700, #d4a017);
+    width: 28px;
+    height: 18px;
+    background: radial-gradient(ellipse, #ffd700 0%, #ffed4e 40%, #d4a017 100%);
     border-radius: 50%;
+    box-shadow: 
+        0 5px 12px rgba(0, 0, 0, 0.4),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.3),
+        inset 0 2px 3px rgba(255, 255, 255, 0.6);
+    border: 2px solid #d4a017;
+    position: absolute;
+    right: 5px;
+    top: 0;
+    animation: coin-float 2s ease-in-out infinite 0.3s;
 }
 
-/* Title section */
+/* Đồng xu giữa */
+.lantern-body::after {
+    content: '';
+    width: 28px;
+    height: 18px;
+    background: radial-gradient(ellipse, #ffd700 0%, #ffed4e 40%, #d4a017 100%);
+    border-radius: 50%;
+    box-shadow: 
+        0 5px 12px rgba(0, 0, 0, 0.4),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.3),
+        inset 0 2px 3px rgba(255, 255, 255, 0.6);
+    border: 2px solid #d4a017;
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: coin-float 2s ease-in-out infinite 0.15s;
+}
+
+/* Animation cho đồng xu lơ lửng */
+@keyframes coin-float {
+    0%, 100% { 
+        transform: translateY(0) translateX(-50%);
+    }
+    50% { 
+        transform: translateY(-5px) translateX(-50%);
+    }
+}
+
+.lantern-tassel::before,
+.lantern-tassel::after {
+    animation-name: coin-float-side;
+}
+
+@keyframes coin-float-side {
+    0%, 100% { 
+        transform: translateY(0);
+    }
+    50% { 
+        transform: translateY(-5px);
+    }
+}
+
+/* Animation đung đưa cho bao tiền */
+@keyframes swing-left {
+    0%, 100% { 
+        transform: rotate(-5deg);
+        transform-origin: top center;
+    }
+    50% { 
+        transform: rotate(5deg);
+        transform-origin: top center;
+    }
+}
+
+@keyframes swing-right {
+    0%, 100% { 
+        transform: rotate(5deg);
+        transform-origin: top center;
+    }
+    50% { 
+        transform: rotate(-5deg);
+        transform-origin: top center;
+    }
+}
+
+.lantern-left,
+.lantern-right {
+    transform-origin: top center;
+}
+
+/* Title section - Font giống trang chính */
 .title-section {
     margin-bottom: 50px;
     animation: fadeInDown 1s ease-out 0.3s backwards;
 }
 
 .main-title {
+    font-family: 'Pacifico', 'Cookie', cursive;
     font-size: 70px;
-    font-weight: 900;
-    color: #ffd700;
+    font-weight: 400;
+    color: #fff8dc;
     line-height: 1.2;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
+    text-transform: capitalize;
     text-shadow: 
-        3px 3px 0 #d4a017,
-        6px 6px 12px rgba(0, 0, 0, 0.6);
+        2px 2px 0 #d4a017,
+        4px 4px 0 #b8860b,
+        6px 6px 12px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(255, 215, 0, 0.6),
+        0 0 60px rgba(255, 255, 255, 0.3);
+    animation: title-glow 3s ease-in-out infinite;
+    background: linear-gradient(135deg, #ffffff 0%, #fffacd 20%, #ffd700 40%, #ffed4e 60%, #ffd700 80%, #f0e68c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(2px 2px 0 #d4a017) 
+            drop-shadow(4px 4px 0 #b8860b) 
+            drop-shadow(6px 6px 12px rgba(0, 0, 0, 0.6))
+            brightness(1.3);
+}
+
+@keyframes title-glow {
+    0%, 100% {
+        filter: drop-shadow(2px 2px 0 #d4a017) 
+                drop-shadow(4px 4px 0 #b8860b) 
+                drop-shadow(6px 6px 12px rgba(0, 0, 0, 0.6))
+                drop-shadow(0 0 30px rgba(255, 215, 0, 0.5))
+                brightness(1.3);
+    }
+    50% {
+        filter: drop-shadow(2px 2px 0 #d4a017) 
+                drop-shadow(4px 4px 0 #b8860b) 
+                drop-shadow(6px 6px 12px rgba(0, 0, 0, 0.6))
+                drop-shadow(0 0 60px rgba(255, 255, 255, 0.8))
+                brightness(1.5);
+    }
 }
 
 /* Greeting card */
@@ -282,6 +569,7 @@ body {
 }
 
 .greeting-text {
+    font-family: 'Arial', 'Helvetica', sans-serif; /* Nội dung card giữ font thường */
     font-size: 42px;
     line-height: 1.6;
     color: #2c3e50;
@@ -322,6 +610,7 @@ body {
     font-weight: bold;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
+    font-family: 'Pacifico', 'Dancing Script', cursive;
 }
 
 .back-button:hover {
@@ -396,18 +685,18 @@ body {
 }
 
 @keyframes swing-left {
-    0%, 100% { transform: rotate(-6deg); }
-    50% { transform: rotate(6deg); }
+    0%, 100% { transform: rotate(-10deg); }
+    50% { transform: rotate(10deg); }
 }
 
 @keyframes swing-right {
-    0%, 100% { transform: rotate(6deg); }
-    50% { transform: rotate(-6deg); }
+    0%, 100% { transform: rotate(10deg); }
+    50% { transform: rotate(-10deg); }
 }
 
 @keyframes float-cloud {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+    0%, 100% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-30px) translateX(15px); }
 }
 
 /* Responsive design */
@@ -541,7 +830,7 @@ body {
     }
     
     .corner::before {
-        border-width: 3px;
+        border-width: 0; /* Không có border */
     }
     
     .corner::after {
